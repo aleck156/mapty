@@ -11,4 +11,12 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
-navigator.geolocation.getCurrentPosition();
+const success = function () {
+  console.log(`Your browser do support geolocation`);
+};
+
+const error = function () {
+  console.log('Your browser does not support gelocation');
+};
+
+navigator.geolocation.getCurrentPosition(success, error);
