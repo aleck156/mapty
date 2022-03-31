@@ -18,7 +18,7 @@ const success = function (pos) {
   console.log(`Latitude:`.padEnd(12) + `${latitude}`);
   console.log(`Longitude:`.padEnd(12) + `${longitude}`);
 
-  var map = L.map('map').setView([latitude, longitude], 13);
+  const map = L.map('map').setView([latitude, longitude], 13);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:
