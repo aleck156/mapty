@@ -15,8 +15,8 @@ const success = function (pos) {
   const { latitude, longitude } = pos.coords;
 
   console.log(`Your browser do support geolocation`);
-  console.log(`Latitude: ${latitude}`);
-  console.log(`Longitude: ${longitude}`);
+  console.log(`Latitude:`.padEnd(12) + `${latitude}`);
+  console.log(`Longitude:`.padEnd(12) + `${longitude}`);
 };
 
 const error = function () {
