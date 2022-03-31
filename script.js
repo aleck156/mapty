@@ -12,9 +12,11 @@ const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
 const success = function (pos) {
+  const { latitude, longitude } = pos.coords;
+
   console.log(`Your browser do support geolocation`);
-  console.log(`Latitude: ${pos.coords.latitude}`);
-  console.log(`Longitude: ${pos.coords.longitude}`);
+  console.log(`Latitude: ${latitude}`);
+  console.log(`Longitude: ${longitude}`);
 };
 
 const error = function () {
