@@ -21,4 +21,5 @@ const error = function () {
   console.log('Your browser does not support gelocation');
 };
 
-navigator.geolocation.getCurrentPosition(success, error);
+if (navigator.geolocation)
+  navigator.geolocation.getCurrentPosition(success, error);
