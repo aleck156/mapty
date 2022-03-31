@@ -14,18 +14,20 @@ const inputElevation = document.querySelector('.form__input--elevation');
 const success = function (pos) {
   const { latitude, longitude } = pos.coords;
 
+  const coords = [latitude, longitude];
+
   console.log(`Your browser do support geolocation`);
   console.log(`Latitude:`.padEnd(12) + `${latitude}`);
   console.log(`Longitude:`.padEnd(12) + `${longitude}`);
 
-  const map = L.map('map').setView([latitude, longitude], 13);
+  const map = L.map('map').setView(coords, 13);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
-  L.marker([latitude, longitude])
+  L.marker(coords)
     .addTo(map)
     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
     .openPopup();
