@@ -38,20 +38,6 @@ const success = function (pos) {
     console.log(mapEvent);
     form.classList.remove('hidden');
     inputDistance.focus();
-
-    // const { lat, lng } = mapEvent.latlng;
-    // L.marker([lat, lng])
-    //   .addTo(map)
-    //   .bindPopup(
-    //     L.popup({
-    //       maxWidth: 250,
-    //       minWidth: 100,
-    //       autoClose: false,
-    //       closeOnClick: false,
-    //       className: 'running-popup',
-    //     }).setContent('hello world')
-    //   )
-    //   .openPopup();
   });
 };
 
@@ -62,8 +48,22 @@ const error = function () {
 if (navigator.geolocation)
   navigator.geolocation.getCurrentPosition(success, error);
 
-form.addEventListener('submit', function () {
+form.addEventListener('submit', function (e) {
   // display marker
+  e.preventDefault();
+  const { lat, lng } = mapEvent.latlng;
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup(
+      L.popup({
+        maxWidth: 250,
+        minWidth: 100,
+        autoClose: false,
+        closeOnClick: false,
+        className: 'running-popup',
+      }).setContent('hello world')
+    )
+    .openPopup();
 });
 
 /////////////////////////////////////////////////////////////////
