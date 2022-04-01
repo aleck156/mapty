@@ -66,6 +66,7 @@ form.addEventListener('submit', function (e) {
   inputDistance.textContent =
     inputDuration.textContent =
     inputElevation.textContent =
+    inputCadence.textContent =
       '';
 
   // display marker
