@@ -60,8 +60,15 @@ if (navigator.geolocation)
 // EVENT LISTENERES
 
 form.addEventListener('submit', function (e) {
-  // display marker
   e.preventDefault();
+
+  // clear input fields
+  inputDistance.textContent =
+    inputDuration.textContent =
+    inputElevation.textContent =
+      '';
+
+  // display marker
   const { lat, lng } = mapEvent.latlng;
   L.marker([lat, lng])
     .addTo(map)
