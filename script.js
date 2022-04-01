@@ -31,6 +31,9 @@ const success = function (pos) {
     .addTo(map)
     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
     .openPopup();
+
+  // viewing the internals of leaflet.js
+  // console.log(map);
 };
 
 const error = function () {
