@@ -62,5 +62,9 @@ const error = function () {
 if (navigator.geolocation)
   navigator.geolocation.getCurrentPosition(success, error);
 
+form.addEventListener('submit', function () {
+  // display marker
+});
+
 /////////////////////////////////////////////////////////////////
 // Rendering Workout Input Form
