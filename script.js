@@ -34,6 +34,11 @@ const success = function (pos) {
 
   // viewing the internals of leaflet.js
   // console.log(map);
+  map.on('click', function (mapEvent) {
+    console.log(mapEvent);
+    const { lat, lng } = mapEvent.latlng;
+    L.marker([lat, lng]).addTo(map).bindPopup('clicked!');
+  });
 };
 
 const error = function () {
