@@ -11,7 +11,7 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
-let map;
+let map, mapEvent;
 
 /////////////////////////////////////////////////////////////////
 // FUNCITONS
@@ -39,7 +39,10 @@ const success = function (pos) {
 
   // viewing the internals of leaflet.js
   // console.log(map);
-  map.on('click', function (mapEvent) {
+
+  // handling clicks on map
+  map.on('click', function (mapE) {
+    mapEvent = mapE;
     console.log(mapEvent);
     form.classList.remove('hidden');
     inputDistance.focus();
