@@ -58,3 +58,6 @@ const error = function () {
 
 if (navigator.geolocation)
   navigator.geolocation.getCurrentPosition(success, error);
+
+/////////////////////////////////////////////////////////////////
+// Rendering Workout Input Form
