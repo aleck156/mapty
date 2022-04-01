@@ -85,5 +85,7 @@ form.addEventListener('submit', function (e) {
     .openPopup();
 });
 
+inputType.addEventListener('change', function (e) {});
+
 /////////////////////////////////////////////////////////////////
 // Rendering Workout Input Form
