@@ -85,7 +85,10 @@ form.addEventListener('submit', function (e) {
     .openPopup();
 });
 
-inputType.addEventListener('change', function (e) {});
+inputType.addEventListener('change', function (e) {
+  inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+  inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
+});
 
 /////////////////////////////////////////////////////////////////
 // Rendering Workout Input Form
