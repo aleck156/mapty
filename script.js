@@ -11,6 +11,8 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
+let map;
+
 /////////////////////////////////////////////////////////////////
 // FUNCITONS
 
@@ -23,7 +25,7 @@ const success = function (pos) {
   console.log(`Latitude:`.padEnd(12) + `${latitude}`);
   console.log(`Longitude:`.padEnd(12) + `${longitude}`);
 
-  const map = L.map('map').setView(coords, 13);
+  map = L.map('map').setView(coords, 13);
 
   L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     attribution:
