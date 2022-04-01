@@ -63,10 +63,10 @@ form.addEventListener('submit', function (e) {
   e.preventDefault();
 
   // clear input fields
-  inputDistance.textContent =
-    inputDuration.textContent =
-    inputElevation.textContent =
-    inputCadence.textContent =
+  inputDistance.value =
+    inputDuration.value =
+    inputElevation.value =
+    inputCadence.value =
       '';
 
   // display marker
