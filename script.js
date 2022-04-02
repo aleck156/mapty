@@ -21,7 +21,7 @@ class App {
 
   _getPosition() {
     const error = function () {
-      console.log('Your browser does not support gelocation');
+      console.log('Your browser does not support geolocation');
     };
 
     if (navigator.geolocation)
