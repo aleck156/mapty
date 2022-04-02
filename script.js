@@ -20,6 +20,15 @@ class App {
 
   constructor() {
     this._getPosition();
+
+    form.addEventListener('submit', this._newWorkout.bind(this));
+
+    inputType.addEventListener('change', function (e) {
+      inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+      inputElevation
+        .closest('.form__row')
+        .classList.toggle('form__row--hidden');
+    });
   }
 
   _getPosition() {
@@ -27,6 +36,8 @@ class App {
       console.log('Your browser does not support geolocation');
     };
 
+    // in a callback functions, it is the calling method that sets the context of *this* keyword
+    // in order to make it work, you have to bind it with the current instance of class
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(this._loadMap.bind(this), error);
   }
@@ -58,7 +69,7 @@ class App {
     // handling clicks on map
     this.#map.on('click', function (mapE) {
       this.#mapEvent = mapE;
-      console.log(mapEvent);
+      console.log(this.#mapEvent);
       form.classList.remove('hidden');
       inputDistance.focus();
     });
@@ -68,7 +79,31 @@ class App {
 
   _toggleElevationField() {}
 
-  _newWorkout() {}
+  _newWorkout() {
+    e.preventDefault();
+
+    // clear input fields
+    inputDistance.value =
+      inputDuration.value =
+      inputElevation.value =
+      inputCadence.value =
+        '';
+
+    // display marker
+    const { lat, lng } = mapEvent.latlng;
+    L.marker([lat, lng])
+      .addTo(map)
+      .bindPopup(
+        L.popup({
+          maxWidth: 250,
+          minWidth: 100,
+          autoClose: false,
+          closeOnClick: false,
+          className: 'running-popup',
+        }).setContent('hello world')
+      )
+      .openPopup();
+  }
 }
 
 const app = new App();
@@ -79,37 +114,6 @@ const app = new App();
 
 /////////////////////////////////////////////////////////////////
 // EVENT LISTENERES
-
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  // clear input fields
-  inputDistance.value =
-    inputDuration.value =
-    inputElevation.value =
-    inputCadence.value =
-      '';
-
-  // display marker
-  const { lat, lng } = mapEvent.latlng;
-  L.marker([lat, lng])
-    .addTo(map)
-    .bindPopup(
-      L.popup({
-        maxWidth: 250,
-        minWidth: 100,
-        autoClose: false,
-        closeOnClick: false,
-        className: 'running-popup',
-      }).setContent('hello world')
-    )
-    .openPopup();
-});
-
-inputType.addEventListener('change', function (e) {
-  inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
-  inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
-});
 
 /////////////////////////////////////////////////////////////////
 // Rendering Workout Input Form
