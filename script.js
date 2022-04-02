@@ -19,7 +19,47 @@ let map, mapEvent;
 class App {
   constructor() {}
 
-  _getPosition() {}
+  _getPosition() {
+    const success = function (pos) {
+      const { latitude, longitude } = pos.coords;
+
+      const coords = [latitude, longitude];
+
+      console.log(`Your browser do support geolocation`);
+      console.log(`Latitude:`.padEnd(12) + `${latitude}`);
+      console.log(`Longitude:`.padEnd(12) + `${longitude}`);
+
+      map = L.map('map').setView(coords, 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      L.marker(coords)
+        .addTo(map)
+        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+        .openPopup();
+
+      // viewing the internals of leaflet.js
+      // console.log(map);
+
+      // handling clicks on map
+      map.on('click', function (mapE) {
+        mapEvent = mapE;
+        console.log(mapEvent);
+        form.classList.remove('hidden');
+        inputDistance.focus();
+      });
+    };
+
+    const error = function () {
+      console.log('Your browser does not support gelocation');
+    };
+
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(success, error);
+  }
 
   _loadMap() {}
 
@@ -32,46 +72,6 @@ class App {
 
 /////////////////////////////////////////////////////////////////
 // FUNCTIONS
-
-const success = function (pos) {
-  const { latitude, longitude } = pos.coords;
-
-  const coords = [latitude, longitude];
-
-  console.log(`Your browser do support geolocation`);
-  console.log(`Latitude:`.padEnd(12) + `${latitude}`);
-  console.log(`Longitude:`.padEnd(12) + `${longitude}`);
-
-  map = L.map('map').setView(coords, 13);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(map);
-
-  L.marker(coords)
-    .addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
-
-  // viewing the internals of leaflet.js
-  // console.log(map);
-
-  // handling clicks on map
-  map.on('click', function (mapE) {
-    mapEvent = mapE;
-    console.log(mapEvent);
-    form.classList.remove('hidden');
-    inputDistance.focus();
-  });
-};
-
-const error = function () {
-  console.log('Your browser does not support gelocation');
-};
-
-if (navigator.geolocation)
-  navigator.geolocation.getCurrentPosition(success, error);
 
 /////////////////////////////////////////////////////////////////
 // EVENT LISTENERES
