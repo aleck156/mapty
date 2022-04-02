@@ -27,7 +27,7 @@ class App {
 
   _toggleElevationField() {}
 
-  _newworkout() {}
+  _newWorkout() {}
 }
 
 /////////////////////////////////////////////////////////////////
