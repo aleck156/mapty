@@ -70,6 +70,9 @@ class App {
   _newWorkout() {}
 }
 
+const app = new App();
+
+app._getPosition();
 /////////////////////////////////////////////////////////////////
 // FUNCTIONS
 
