@@ -14,7 +14,10 @@ const inputElevation = document.querySelector('.form__input--elevation');
 let map, mapEvent;
 
 /////////////////////////////////////////////////////////////////
-// FUNCITONS
+// CLASSES
+
+/////////////////////////////////////////////////////////////////
+// FUNCTIONS
 
 const success = function (pos) {
   const { latitude, longitude } = pos.coords;
