@@ -28,7 +28,7 @@ class App {
     };
 
     if (navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(this._loadMap, error);
+      navigator.geolocation.getCurrentPosition(this._loadMap.bind(this), error);
   }
 
   _loadMap(pos) {
@@ -40,15 +40,15 @@ class App {
     console.log(`Latitude:`.padEnd(12) + `${latitude}`);
     console.log(`Longitude:`.padEnd(12) + `${longitude}`);
 
-    map = L.map('map').setView(coords, 13);
+    this.#map = L.map('map').setView(coords, 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
+    }).addTo(this.#map);
 
     L.marker(coords)
-      .addTo(map)
+      .addTo(this.#map)
       .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
       .openPopup();
 
@@ -56,8 +56,8 @@ class App {
     // console.log(map);
 
     // handling clicks on map
-    map.on('click', function (mapE) {
-      mapEvent = mapE;
+    this.#map.on('click', function (mapE) {
+      this.#mapEvent = mapE;
       console.log(mapEvent);
       form.classList.remove('hidden');
       inputDistance.focus();
