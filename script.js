@@ -16,6 +16,20 @@ let map, mapEvent;
 /////////////////////////////////////////////////////////////////
 // CLASSES
 
+class App {
+  constructor() {}
+
+  _getPosition() {}
+
+  _loadMap() {}
+
+  _showForm() {}
+
+  _toggleElevationField() {}
+
+  _newworkout() {}
+}
+
 /////////////////////////////////////////////////////////////////
 // FUNCTIONS
 
