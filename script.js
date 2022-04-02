@@ -79,7 +79,7 @@ class App {
 
   _toggleElevationField() {}
 
-  _newWorkout() {
+  _newWorkout(e) {
     e.preventDefault();
 
     // clear input fields
@@ -90,9 +90,9 @@ class App {
         '';
 
     // display marker
-    const { lat, lng } = mapEvent.latlng;
+    const { lat, lng } = this.#mapEvent.latlng;
     L.marker([lat, lng])
-      .addTo(map)
+      .addTo(this.#map)
       .bindPopup(
         L.popup({
           maxWidth: 250,
