@@ -17,7 +17,9 @@ let map, mapEvent;
 // CLASSES
 
 class App {
-  constructor() {}
+  constructor() {
+    this._getPosition();
+  }
 
   _getPosition() {
     const error = function () {
@@ -70,7 +72,7 @@ class App {
 
 const app = new App();
 
-app._getPosition();
+// app._getPosition();
 /////////////////////////////////////////////////////////////////
 // FUNCTIONS
 
