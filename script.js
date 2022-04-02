@@ -20,8 +20,6 @@ class App {
   constructor() {}
 
   _getPosition() {
-    const success = function (pos) {};
-
     const error = function () {
       console.log('Your browser does not support gelocation');
     };
