@@ -128,6 +128,13 @@ class App {
     // create Running/Cycling object based on the data
     if (type === 'running') {
       const cadence = +inputCadence.value;
+      if (
+        !Number.isFinite(cadence) ||
+        !Number.isFinite(duration) ||
+        !Number.isFinite(distance)
+      ) {
+        return alert('Inputs have to be positive numbers');
+      }
     }
     if (type === 'cycling') {
       const elevation = +inputElevation.value;
