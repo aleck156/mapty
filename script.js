@@ -119,6 +119,9 @@ class App {
     e.preventDefault();
 
     // get data from the form
+    const type = inputType.value;
+    const distance = +inputDistance.value; // handy way of converting strings to numbers
+    const duration = +inputDuration.value;
 
     // check if data is valid
 
