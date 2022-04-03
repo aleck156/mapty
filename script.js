@@ -25,6 +25,7 @@ class Workout {
 }
 
 class Running extends Workout {
+  type = 'running';
   constructor(coords, dist, duration, cadence) {
     super(coords, dist, duration);
     this.cadence = cadence;
@@ -38,6 +39,7 @@ class Running extends Workout {
 }
 
 class Cycling extends Workout {
+  type = 'cycling';
   constructor(coords, dist, duration, elevation) {
     super(coords, dist, duration);
     this.elevation = elevation;
