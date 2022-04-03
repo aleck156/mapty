@@ -49,6 +49,9 @@ class Cycling extends Workout {
     return this.speed;
   }
 }
+
+//////////////////////////////////////////////////
+// ARCHITECTURE
 class App {
   #map;
   #mapEvent;
