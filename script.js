@@ -119,6 +119,8 @@ class App {
     const validInputs = (...inputs) =>
       inputs.every(inp => Number.isFinite(inp));
 
+    const allPositive = (...inputs) => inputs.every(inp => inp > 0);
+
     e.preventDefault();
 
     // get data from the form
@@ -131,13 +133,19 @@ class App {
     // create Running/Cycling object based on the data
     if (type === 'running') {
       const cadence = +inputCadence.value;
-      if (!validInputs(cadence, distance, duration)) {
+      if (
+        !validInputs(cadence, distance, duration) ||
+        !allPositive(distance, duration, cadence)
+      ) {
         return alert('Inputs have to be positive numbers');
       }
     }
     if (type === 'cycling') {
       const elevation = +inputElevation.value;
-      if (!validInputs(elevation, distance, duration)) {
+      if (
+        !validInputs(elevation, distance, duration) ||
+        !allPositive(distance, duration)
+      ) {
         return alert('Inputs have to be positive numbers');
       }
     }
