@@ -129,6 +129,7 @@ class App {
     const type = inputType.value;
     const distance = +inputDistance.value; // handy way of converting strings to numbers
     const duration = +inputDuration.value;
+    let workout;
 
     // check if data is valid
 
@@ -142,7 +143,7 @@ class App {
         return alert('Inputs have to be positive numbers');
       }
 
-      const workout = new Running([lat, lng], distance, duration, cadence);
+      workout = new Running([lat, lng], distance, duration, cadence);
       console.log(workout);
     }
     if (type === 'cycling') {
@@ -154,7 +155,7 @@ class App {
         return alert('Inputs have to be positive numbers');
       }
 
-      const workout = new Cycling([lat, lng], distance, duration, elevation);
+      workout = new Cycling([lat, lng], distance, duration, elevation);
       console.log(workout);
     }
 
