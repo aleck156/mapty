@@ -116,7 +116,8 @@ class App {
   }
 
   _newWorkout(e) {
-    const validInputs = (...inputs) => inputs.every(inp => Number.isFinite(inp))
+    const validInputs = (...inputs) =>
+      inputs.every(inp => Number.isFinite(inp));
 
     e.preventDefault();
 
@@ -130,14 +131,15 @@ class App {
     // create Running/Cycling object based on the data
     if (type === 'running') {
       const cadence = +inputCadence.value;
-      if (
-        // placeholder
-      ) {
+      if (!validInputs(cadence, distance, duration)) {
         return alert('Inputs have to be positive numbers');
       }
     }
     if (type === 'cycling') {
       const elevation = +inputElevation.value;
+      if (!validInputs(elevation, distance, duration)) {
+        return alert('Inputs have to be positive numbers');
+      }
     }
 
     // add new object to workout array
