@@ -28,10 +28,12 @@ class Running extends Workout {
   constructor(coords, dist, duration, cadence) {
     super(coords, dist, duration);
     this.cadence = cadence;
+    this.calcPace();
   }
 
   calcPace() {
     this.pace = this.duration / this.distance;
+    return this.pace;
   }
 }
 
