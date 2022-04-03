@@ -45,7 +45,7 @@ class Cycling extends Workout {
   }
 
   calcSpeed() {
-    this.speed = this.distance / (this.speed / 60);
+    this.speed = this.distance / (this.duration / 60);
     return this.speed;
   }
 }
