@@ -122,6 +122,7 @@ class App {
     const allPositive = (...inputs) => inputs.every(inp => inp > 0);
 
     e.preventDefault();
+    const { lat, lng } = this.#mapEvent.latlng;
 
     // get data from the form
     const type = inputType.value;
@@ -139,6 +140,9 @@ class App {
       ) {
         return alert('Inputs have to be positive numbers');
       }
+
+      const workout = new Running([lat, lng], distance, duration, cadence);
+      console.log(workout);
     }
     if (type === 'cycling') {
       const elevation = +inputElevation.value;
@@ -153,7 +157,6 @@ class App {
     // add new object to workout array
 
     // render workout on map as marker
-    const { lat, lng } = this.#mapEvent.latlng;
     L.marker([lat, lng])
       .addTo(this.#map)
       .bindPopup(
