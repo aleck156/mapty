@@ -184,6 +184,8 @@ class App {
       inputCadence.value =
         '';
   }
+
+  renderWorkoutMarker() {}
 }
 
 const app = new App();
