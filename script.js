@@ -18,7 +18,7 @@ class Workout {
   #id = (new Date() + '').slice(-10);
 
   constructor(coords, dist, duration) {
-    this.coords = coords;
+    this.coords = coords; // [lat, lng]
     this.distance = dist; // in km
     this.duration = duration; // in minutes
   }
