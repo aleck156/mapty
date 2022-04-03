@@ -152,6 +152,9 @@ class App {
       ) {
         return alert('Inputs have to be positive numbers');
       }
+
+      const workout = new Cycling([lat, lng], distance, duration, elevation);
+      console.log(workout);
     }
 
     // add new object to workout array
