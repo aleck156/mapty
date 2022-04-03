@@ -144,7 +144,6 @@ class App {
       }
 
       workout = new Running([lat, lng], distance, duration, cadence);
-      console.log(workout);
     }
     if (type === 'cycling') {
       const elevation = +inputElevation.value;
@@ -156,11 +155,11 @@ class App {
       }
 
       workout = new Cycling([lat, lng], distance, duration, elevation);
-      console.log(workout);
     }
 
     // add new object to workout array
-
+    this.#workouts.push(workout);
+    console.log(this.#workouts);
     // render workout on map as marker
     L.marker([lat, lng])
       .addTo(this.#map)
