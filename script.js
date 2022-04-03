@@ -118,6 +118,20 @@ class App {
   _newWorkout(e) {
     e.preventDefault();
 
+    // get data from the form
+
+    // check if data is valid
+
+    // create Running/Cycling object based on the data
+
+    // add new object to workout array
+
+    // render workout on map as marker
+
+    // render new workout on the list
+
+    // hide form and clear the input fields
+
     // clear input fields
     inputDistance.value =
       inputDuration.value =
