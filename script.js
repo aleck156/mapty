@@ -169,7 +169,7 @@ class App {
           minWidth: 100,
           autoClose: false,
           closeOnClick: false,
-          className: 'running-popup',
+          className: `${type}-popup`,
         }).setContent('hello world')
       )
       .openPopup();
