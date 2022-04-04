@@ -121,6 +121,14 @@ class App {
     inputDistance.focus();
   }
 
+  _hideForm() {
+    inputDistance.value =
+      inputDuration.value =
+      inputElevation.value =
+      inputCadence.value =
+        '';
+  }
+
   _toggleElevationField() {
     inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
     inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
@@ -248,16 +256,6 @@ class App {
 
     form.insertAdjacentHTML('afterend', html);
   }
-
-  _hideForm() {
-    inputDistance.value =
-      inputDuration.value =
-      inputElevation.value =
-      inputCadence.value =
-        '';
-  }
-
-  _showForm() {}
 }
 
 const app = new App();
