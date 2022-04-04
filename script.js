@@ -248,6 +248,8 @@ class App {
       </li>
       `;
     }
+
+    form.insertAdjacentElement('afterend', html);
   }
 }
 
