@@ -127,6 +127,7 @@ class App {
       inputElevation.value =
       inputCadence.value =
         '';
+    form.classList.add('hidden');
   }
 
   _toggleElevationField() {
