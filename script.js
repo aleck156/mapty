@@ -177,13 +177,9 @@ class App {
     this._renderWorkout(workout);
 
     // hide form and clear the input fields
+    this._hideForm();
 
     // clear input fields
-    inputDistance.value =
-      inputDuration.value =
-      inputElevation.value =
-      inputCadence.value =
-        '';
   }
 
   _renderWorkoutMarker(workout) {
@@ -252,6 +248,16 @@ class App {
 
     form.insertAdjacentHTML('afterend', html);
   }
+
+  _hideForm() {
+    inputDistance.value =
+      inputDuration.value =
+      inputElevation.value =
+      inputCadence.value =
+        '';
+  }
+
+  _showForm() {}
 }
 
 const app = new App();
