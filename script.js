@@ -131,7 +131,7 @@ class App {
     // no the best way to do it, but couldn't figure out any other way ... yet
     form.style.display = 'none';
     form.classList.add('hidden');
-    form.style.display = 'grid';
+    setTimeout(() => (form.style.display = 'grid'), 1500);
   }
 
   _toggleElevationField() {
