@@ -249,7 +249,7 @@ class App {
       `;
     }
 
-    form.insertAdjacentElement('afterend', html);
+    form.insertAdjacentHTML('afterend', html);
   }
 }
 
