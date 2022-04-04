@@ -174,6 +174,7 @@ class App {
     // render workout on map as marker
     this._renderWorkoutMarker(workout);
     // render new workout on the list
+    this._renderWorkout(workout);
 
     // hide form and clear the input fields
 
