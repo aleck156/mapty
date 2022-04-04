@@ -74,12 +74,14 @@ class App {
   #mapZoomLevel = 13;
 
   constructor() {
+    // get user's position
     this._getPosition();
 
+    // get data from local storage
+
+    // attach event handlers
     form.addEventListener('submit', this._newWorkout.bind(this));
-
     inputType.addEventListener('change', this._toggleElevationField.bind(this));
-
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
   }
 
