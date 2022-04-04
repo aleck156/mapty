@@ -212,6 +212,8 @@ class App {
         )
       )
       .openPopup();
+
+    this.#map.setView(workout.coords);
   }
 
   _renderWorkout(workout) {
