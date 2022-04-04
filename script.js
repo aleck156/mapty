@@ -266,7 +266,12 @@ class App {
     form.insertAdjacentHTML('afterend', html);
   }
 
-  _moveToPopup() {}
+  _moveToPopup(e) {
+    const workoutEl = e.target.closest('.workout');
+    if (!workoutEl) return;
+
+    console.log(workoutEl);
+  }
 }
 
 const app = new App();
