@@ -127,7 +127,11 @@ class App {
       inputElevation.value =
       inputCadence.value =
         '';
+
+    // no the best way to do it, but couldn't figure out any other way ... yet
+    form.style.display = 'none';
     form.classList.add('hidden');
+    form.style.display = 'grid';
   }
 
   _toggleElevationField() {
