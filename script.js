@@ -295,7 +295,9 @@ class App {
     workout.click();
   }
 
-  _setLocalStorage() {}
+  _setLocalStorage() {
+    localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+  }
 }
 
 const app = new App();
