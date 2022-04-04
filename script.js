@@ -66,6 +66,7 @@ class App {
   #map;
   #mapEvent;
   #workouts = [];
+  #mapZoomerLevel = 13;
 
   constructor() {
     this._getPosition();
@@ -97,7 +98,7 @@ class App {
     console.log(`Latitude:`.padEnd(12) + `${latitude}`);
     console.log(`Longitude:`.padEnd(12) + `${longitude}`);
 
-    this.#map = L.map('map').setView(coords, 13);
+    this.#map = L.map('map').setView(coords, this.#mapZoomerLevel);
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution:
@@ -213,7 +214,7 @@ class App {
       )
       .openPopup();
 
-    this.#map.setView(workout.coords);
+    this.#map.setView(workout.coords, this.#mapZoomerLevel);
   }
 
   _renderWorkout(workout) {
@@ -277,7 +278,7 @@ class App {
     );
     console.log(workout);
 
-    this.#map.setView(workout.coords);
+    this.#map.setView(workout.coords, this.#mapZoomerLevel);
   }
 }
 
