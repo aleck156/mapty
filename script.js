@@ -74,7 +74,7 @@ class App {
 
     inputType.addEventListener('change', this._toggleElevationField.bind(this));
 
-    containerWorkouts.addEventListener('click', this._moveToPopup);
+    containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
   }
 
   _getPosition() {
