@@ -161,7 +161,8 @@ class App {
 
     // add new object to workout array
     this.#workouts.push(workout);
-    console.log(this.#workouts);
+
+    // console.log(this.#workouts);
     // render workout on map as marker
     this._renderWorkoutMarker(workout);
     // render new workout on the list
@@ -189,6 +190,27 @@ class App {
         }).setContent(`Workout type: ${workout.type}`)
       )
       .openPopup();
+  }
+
+  _renderWorkout(workout) {
+    const html = `
+    <li class="workout workout--${workout.type}" data-id="${workout.id}">
+      <h2 class="workout__title">${workout.type.replace(
+        workout.type[0],
+        workout.type[0].toUpperCase()
+      )} on April 14</h2>
+      <div class="workout__details">
+        <span class="workout__icon">${
+          workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'
+        } </span>
+        <span class="workout__value">${workout.distance}</span>
+        <span class="workout__unit">km</span>
+      </div>
+      <div class="workout__details">
+        <span class="workout__icon">⏱</span>
+        <span class="workout__value">${workout.duration}</span>
+        <span class="workout__unit">min</span>
+      </div>`;
   }
 }
 
