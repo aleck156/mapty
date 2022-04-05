@@ -312,6 +312,11 @@ class App {
 
     return JSON.parse(localStorageWorkouts);
   }
+
+  reset() {
+    localStorage.removeItem('workouts');
+    location.reload();
+  }
 }
 
 const app = new App();
