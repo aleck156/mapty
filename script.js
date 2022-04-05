@@ -302,7 +302,19 @@ class App {
     localStorage.setItem('workouts', JSON.stringify(this.#workouts));
   }
 
-  _getLocalStorage() {}
+  _getLocalStorage() {
+    const localStorageWorkouts = localStorage.getItem('workouts');
+
+    if (!localStorageWorkouts) return;
+
+    this.#workouts = JSON.parse(localStorageWorkouts);
+
+    this.#workouts.forEach(
+      w => this._renderWorkout(w) && this._renderWorkoutMarker(w)
+    );
+
+    return JSON.parse(localStorageWorkouts);
+  }
 }
 
 const app = new App();
