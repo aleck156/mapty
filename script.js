@@ -85,10 +85,7 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField.bind(this));
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
-    btnReset.addEventListener('click', e => {
-      e.preventDefault();
-      this.reset();
-    });
+    btnReset.addEventListener('click', e => this.reset(e));
   }
 
   _getPosition() {
@@ -318,7 +315,8 @@ class App {
     return JSON.parse(localStorageWorkouts);
   }
 
-  reset() {
+  reset(e) {
+    e.preventDefault();
     localStorage.removeItem('workouts');
     location.reload();
   }
