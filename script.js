@@ -103,8 +103,6 @@ class App {
     const coords = [latitude, longitude];
 
     console.log(`Your browser do support geolocation`);
-    console.log(`Latitude:`.padEnd(12) + `${latitude}`);
-    console.log(`Longitude:`.padEnd(12) + `${longitude}`);
 
     this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
 
@@ -118,11 +116,13 @@ class App {
       .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
       .openPopup();
 
-    // viewing the internals of leaflet.js
-    // console.log(map);
-
     // handling clicks on map
     this.#map.on('click', this._showForm.bind(this));
+
+    this.#workouts.forEach(w => {
+      this._renderWorkout(w);
+      this._renderWorkoutMarker(w);
+    });
   }
 
   _showForm(mapE) {
@@ -194,7 +194,6 @@ class App {
     // add new object to workout array
     this.#workouts.push(workout);
 
-    // console.log(this.#workouts);
     // render workout on map as marker
     this._renderWorkoutMarker(workout);
     // render new workout on the list
@@ -285,7 +284,6 @@ class App {
     const workout = this.#workouts.find(
       work => work.id === workoutEl.dataset.id
     );
-    console.log(workout);
 
     this.#map.setView(workout.coords, this.#mapZoomLevel, {
       animate: true,
@@ -303,16 +301,14 @@ class App {
   }
 
   _getLocalStorage() {
+    // the problem with loading data from localStorage is that it loses information about __proto__ reference - every workout has a base of Object, not Workout
+    // the prototype chain is lost //
     const localStorageWorkouts = localStorage.getItem('workouts');
 
     if (!localStorageWorkouts) return;
 
+    // here, we should recreate proper instances of object classes to keep the inherited methods working
     this.#workouts = JSON.parse(localStorageWorkouts);
-
-    this.#workouts.forEach(w => {
-      this._renderWorkout(w);
-      this._renderWorkoutMarker(w);
-    });
 
     return JSON.parse(localStorageWorkouts);
   }
