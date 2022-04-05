@@ -85,6 +85,7 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField.bind(this));
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
+    containerWorkouts.addEventListener('click', this._deleteWorkout.bind(this));
     btnReset.addEventListener('click', e => this.reset(e));
   }
 
@@ -230,7 +231,8 @@ class App {
   _renderWorkout(workout) {
     let html = `
     <li class="workout workout--${workout.type}" data-id="${workout.id}">
-      <h2 class="workout__title">${workout.description}</h2>
+    <h2 class="workout__title">${workout.description}</h2>
+    <button class='workout__delete'>X</button>
       <div class="workout__details">
         <span class="workout__icon">${
           workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'
@@ -295,7 +297,7 @@ class App {
     });
 
     // using the public interface
-    workout.click();
+    // workout.click();
   }
 
   _setLocalStorage() {
@@ -319,6 +321,28 @@ class App {
     e.preventDefault();
     localStorage.removeItem('workouts');
     location.reload();
+  }
+
+  _deleteWorkout(e) {
+    // guard against false-positive trigger
+    if (!e.target.classList.contains('workout__delete')) return;
+
+    // grab the nearest html element
+    const workoutHTML = e.target.closest('.workout');
+
+    // find that workout in current workout object list
+    const workoutEl = this.#workouts.find(
+      work => work.id === workoutHTML.dataset.id
+    );
+
+    // remove it from the workouts list visible on page
+    workoutHTML.remove();
+
+    // remove it from workout list
+    this.#workouts.splice(this.#workouts.indexOf(workoutEl), 1);
+
+    // console.log(this.#workouts);
+    this._setLocalStorage();
   }
 }
 

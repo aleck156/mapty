@@ -87,7 +87,7 @@ a:visited {
 .workout__title {
   font-size: 1.7rem;
   font-weight: 600;
-  grid-column: 1 / -1;
+  grid-column: 1 / -2;
 }
 
 .workout__details {
@@ -226,4 +226,17 @@ a:visited {
   margin-bottom: 1.75rem;
   color: var(--color-light--2);
   border: none;
+}
+
+.workout__delete {
+  color: var(--color-light--2);
+  background-color: var(--color-dark--1);
+  border-radius: 5px;
+  width: 50px;
+
+  font-size: 1.5rem;
+
+  border: none;
+
+  position: sticky;
 }
