@@ -7,6 +7,7 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
+const btnReset = document.querySelector('.resetData');
 
 /////////////////////////////////////////////////////////////////
 // CLASSES
@@ -84,6 +85,10 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField.bind(this));
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
+    btnReset.addEventListener('click', e => {
+      e.preventDefault();
+      this.reset();
+    });
   }
 
   _getPosition() {
