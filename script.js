@@ -309,9 +309,10 @@ class App {
 
     this.#workouts = JSON.parse(localStorageWorkouts);
 
-    this.#workouts.forEach(
-      w => this._renderWorkout(w) && this._renderWorkoutMarker(w)
-    );
+    this.#workouts.forEach(w => {
+      this._renderWorkout(w);
+      this._renderWorkoutMarker(w);
+    });
 
     return JSON.parse(localStorageWorkouts);
   }
