@@ -78,6 +78,7 @@ class App {
     this._getPosition();
 
     // get data from local storage
+    this._getLocalStorage();
 
     // attach event handlers
     form.addEventListener('submit', this._newWorkout.bind(this));
@@ -300,6 +301,8 @@ class App {
   _setLocalStorage() {
     localStorage.setItem('workouts', JSON.stringify(this.#workouts));
   }
+
+  _getLocalStorage() {}
 }
 
 const app = new App();
