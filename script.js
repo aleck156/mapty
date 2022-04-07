@@ -199,6 +199,7 @@ class App {
 
     // render workout on map as marker
     this._renderWorkoutMarker(workout);
+
     // render new workout on the list
     this._renderWorkout(workout);
 
@@ -228,12 +229,19 @@ class App {
     this.#map.setView(workout.coords, this.#mapZoomLevel);
   }
 
+  _deleteWorkoutMarker(workout) {
+    // console.log(L.marker);
+    // this.#map.removeLayer(workout.coords);
+    // console.log(workout);
+    // this.#map.removeLayer(workout.marker);
+  }
+
   _renderWorkout(workout) {
     let html = `
     <li class="workout workout--${workout.type}" data-id="${workout.id}">
     <h2 class="workout__title">${workout.description}</h2>
     <button class='workout__delete'>X</button>
-      <div class="workout__details">
+    <div class="workout__details">
         <span class="workout__icon">${
           workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'
         } </span>
@@ -301,6 +309,7 @@ class App {
   }
 
   _setLocalStorage() {
+    this.#workouts.forEach(w => delete w.marker);
     localStorage.setItem('workouts', JSON.stringify(this.#workouts));
   }
 
@@ -313,6 +322,7 @@ class App {
 
     // here, we should recreate proper instances of object classes to keep the inherited methods working
     this.#workouts = JSON.parse(localStorageWorkouts);
+    // this.#workouts.forEach(w => console.log(w));
 
     return JSON.parse(localStorageWorkouts);
   }
@@ -334,6 +344,8 @@ class App {
     const workoutEl = this.#workouts.find(
       work => work.id === workoutHTML.dataset.id
     );
+
+    this._deleteWorkoutMarker(workoutEl);
 
     // remove it from the workouts list visible on page
     workoutHTML.remove();

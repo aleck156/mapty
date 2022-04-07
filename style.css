@@ -231,12 +231,26 @@ a:visited {
 .workout__delete {
   color: var(--color-light--2);
   background-color: var(--color-dark--1);
+  text-align: center;
   border-radius: 5px;
-  width: 50px;
+  width: 85px;
 
   font-size: 1.5rem;
 
   border: none;
 
-  position: sticky;
+  position: relative;
 }
+
+// .neighbour::before {
+//   content: 'Neighbour country';
+//   width: 100%;
+//   position: absolute;
+//   top: -4rem;
+
+//   text-align: center;
+//   font-size: 1.8rem;
+//   font-weight: 600;
+//   text-transform: uppercase;
+//   color: #888;
+// }
